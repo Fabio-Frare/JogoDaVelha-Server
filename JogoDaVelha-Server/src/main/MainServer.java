@@ -47,6 +47,10 @@ public class MainServer {
         String msg = bf.readLine();
 
         System.out.println("msg: " + msg);
+        
+        String retorno = "Mensagem " + msg +  " recebida com sucesso pelo servidor.";
+        
+        enviarDados(retorno);
 
 //        String retorno = controller.trataDados(msg);  
 //        enviarDados(retorno);
