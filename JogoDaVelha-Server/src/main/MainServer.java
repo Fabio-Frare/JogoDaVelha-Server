@@ -1,5 +1,6 @@
 package main;
 
+import controller.Controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,6 +20,8 @@ public class MainServer {
     private static Socket s;
     private static ServerSocket ss;
     private static PrintWriter pr;
+    private static Controller controller;
+    private static String retorno;
 
     public static void main(String[] args) throws IOException, ParseException {
 
@@ -28,7 +31,7 @@ public class MainServer {
 
         ss = new ServerSocket(port);
         ss.setReuseAddress(true);
-//        controller = new Controller();
+        controller = new Controller();
         System.out.println("Iniciado");
 
         while (true) {
@@ -46,14 +49,10 @@ public class MainServer {
         BufferedReader bf    = new BufferedReader(in);
         String msg = bf.readLine();
 
-        System.out.println("msg: " + msg);
-        
-        String retorno = "Mensagem " + msg +  " recebida com sucesso pelo servidor.";
-        
-        enviarDados(retorno);
+//        System.out.println("msg: " + msg);
 
-//        String retorno = controller.trataDados(msg);  
-//        enviarDados(retorno);
+        retorno = controller.trataDados(msg);
+        enviarDados(retorno);
     }
 
     public static void enviarDados(String msg) throws IOException {
