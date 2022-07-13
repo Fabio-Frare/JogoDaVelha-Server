@@ -84,6 +84,7 @@ public class Utils {
         player.setEndereco((String) json.get("endereco"));
         player.setLiberado(false);
         
+        
         return player;
     }
 

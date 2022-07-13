@@ -51,7 +51,7 @@ public class MainServer {
 
 //        System.out.println("msg: " + msg);
 
-        retorno = controller.trataDados(msg);
+        retorno = controller.trataDados(msg, clienteIP);
         enviarDados(retorno);
     }
 

@@ -23,13 +23,17 @@ public class Datasource {
     }
     
     public String addPlayer(String msg) throws ParseException {   
-        player = utils.converteJsonToPlayer(msg);
+       
+        if(dadosPlayers.size() < 4) {
+            player = utils.converteJsonToPlayer(msg);
+            dadosPlayers.add(player);   
+//            System.out.println("Datasource: " + dadosPlayers.toString());
+            System.out.println("Datasource: " + dadosPlayers.size());
+            return player.getNome() + " cadastrado no jogo. Prepare-se!!!";
+        } else {
+            return "Número máximo de jogadores atingido.";
+        }
         
-        dadosPlayers.add(player);
-        
-//        System.out.println("Datasource: " + dadosPlayers.toString());
-        
-        return "Pessoa "+ player.getNome() + " inserida com sucesso.";
     }
     
     

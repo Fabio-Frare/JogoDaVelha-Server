@@ -15,16 +15,15 @@ public class Controller {
     private Datasource datasource;
     
 
-    public String trataDados(String msg) throws ParseException {
-        utils = new Utils();    
-        datasource = new Datasource();
+    public String trataDados(String msg, String clientIP) throws ParseException {
+        utils           = new Utils();    
+        datasource      = new Datasource();
         String operacao = utils.retornaOperacao(msg);
                 
         
         
         switch (operacao) {
-            case "1": // cadastrar player
-                // precisa enviar o IP do cliente para salvar no model
+            case "1": 
                 return datasource.addPlayer(msg);
              
                 
