@@ -23,12 +23,11 @@ public class Controller {
         
         
         switch (operacao) {
-            case "1": 
+            case "1": // cadastrar player
                 return datasource.addPlayer(msg);
              
                 
-        }
-        
+        }        
         
         
        return "deu erro"; 
