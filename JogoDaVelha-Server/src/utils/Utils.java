@@ -87,6 +87,17 @@ public class Utils {
         
         return player;
     }
+
+    public String liberaJogoPlayer(String nomePlayer) {
+        String msg = "cadastrado com sucesso. Prepare-se!!!";
+  
+        JSONObject liberaJogo = new JSONObject();  
+        liberaJogo.put("operacao"  , "1");
+        liberaJogo.put("msg"       , msg);
+        liberaJogo.put("nomePlayer", nomePlayer);
+        
+        return liberaJogo.toJSONString();
+    }
     
     
     

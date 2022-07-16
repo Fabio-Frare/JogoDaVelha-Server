@@ -17,6 +17,7 @@ public class Datasource {
     private final Utils utils;
     private Player player;
     private static final List<Player> dadosPlayers = new ArrayList();
+    String resposta = "";
 
     public Datasource() {
         this.utils = new Utils();
@@ -28,8 +29,8 @@ public class Datasource {
             player = utils.converteJsonToPlayer(msg);
             dadosPlayers.add(player);
 //            System.out.println("Datasource: " + dadosPlayers.toString());
-//            System.out.println("Datasource: " + dadosPlayers.size());
-            return player.getNome() + " cadastrado no jogo. Prepare-se!!!";
+//            System.out.println("Datasource: " + dadosPlayers.size());          
+            return utils.liberaJogoPlayer(player.getNome()); 
         } else {
             return "Número máximo de jogadores atingido.";
         }
