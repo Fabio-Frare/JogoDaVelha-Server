@@ -13,6 +13,7 @@ import utils.Utils;
 public class Controller {
     private Utils utils;
     private Datasource datasource;
+    private int rodada = 0;
     
 
     public String trataDados(String msg, String clientIP) throws ParseException {
@@ -24,7 +25,10 @@ public class Controller {
         
         switch (operacao) {
             case "1": // cadastrar player
-                return datasource.addPlayer(msg);
+                
+                String resposta = datasource.addPlayer(msg);
+                
+                return resposta;
              
                 
         }        

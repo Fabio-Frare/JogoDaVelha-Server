@@ -17,11 +17,11 @@ import org.json.simple.parser.ParseException;
  * @since 07/2022
  */
 public class MainServer {
-    private static Socket s;
+    private static Socket       s;
     private static ServerSocket ss;
-    private static PrintWriter pr;
-    private static Controller controller;
-    private static String retorno;
+    private static PrintWriter  pr;
+    private static Controller   controller;
+    private static String       retorno;
 
     public static void main(String[] args) throws IOException, ParseException {
 
@@ -47,7 +47,7 @@ public class MainServer {
 
         InputStreamReader in = new InputStreamReader(s.getInputStream());
         BufferedReader bf    = new BufferedReader(in);
-        String msg = bf.readLine();
+        String msg           = bf.readLine();
 
 //        System.out.println("msg: " + msg);
 

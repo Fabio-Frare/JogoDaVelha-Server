@@ -32,7 +32,7 @@ public class Datasource {
 //            System.out.println("Datasource: " + dadosPlayers.size());          
             return utils.liberaJogoPlayer(player.getNome()); 
         } else {
-            return "Número máximo de jogadores atingido.";
+            return utils.numeroMaximoPlayers();
         }
 
     }

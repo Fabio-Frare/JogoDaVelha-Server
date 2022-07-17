@@ -95,8 +95,20 @@ public class Utils {
         liberaJogo.put("operacao"  , "1");
         liberaJogo.put("msg"       , msg);
         liberaJogo.put("nomePlayer", nomePlayer);
+        liberaJogo.put("liberado"  , true);
         
         return liberaJogo.toJSONString();
+    }
+
+    public String numeroMaximoPlayers() {
+        String msg = "Número máximo de players cadastrado. Fica para a próxima!!!";
+  
+        JSONObject bloqueiaJogo = new JSONObject();  
+        bloqueiaJogo.put("operacao", "2");
+        bloqueiaJogo.put("msg"     , msg);
+        
+        return bloqueiaJogo.toJSONString();
+    
     }
     
     
