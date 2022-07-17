@@ -17,10 +17,12 @@ public class Datasource {
     private final Utils utils;
     private Player player;
     private static final List<Player> dadosPlayers = new ArrayList();
-    String resposta = "";
+//    private String resposta = "";
+    private int contador;
 
     public Datasource() {
         this.utils = new Utils();
+        contador = 1;
     }
 
     public String addPlayer(String msg) throws ParseException {
@@ -28,13 +30,32 @@ public class Datasource {
         if (dadosPlayers.size() < 4) {
             player = utils.converteJsonToPlayer(msg);
             dadosPlayers.add(player);
-//            System.out.println("Datasource: " + dadosPlayers.toString());
+            atualizaVezPlayer();
+            System.out.println("Datasource: " + dadosPlayers.toString());
 //            System.out.println("Datasource: " + dadosPlayers.size());          
-            return utils.liberaJogoPlayer(player.getNome()); 
+            return utils.liberaJogoPlayer(player.getNome(), player.isLiberado()); 
         } else {
             return utils.numeroMaximoPlayers();
+        }        
+    }    
+    
+    private void atualizaVezPlayer() {
+        for (Player play : dadosPlayers) {
+            if(dadosPlayers.indexOf(play) == (contador-1)) {
+                play.setLiberado(true);
+            } else {
+                play.setLiberado(false);
+            }
+            atualizaContador();
+        }       
+    }
+    
+    private void atualizaContador() {
+        if(contador%4 == 0) {
+            this.contador = 1;
+        } else {
+            this.contador = contador++;
         }
-
     }
 
 }

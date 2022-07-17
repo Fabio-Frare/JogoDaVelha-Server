@@ -84,18 +84,14 @@ public class Utils {
         player.setEndereco((String) json.get("endereco"));
         player.setLiberado(false);
         
-        
         return player;
     }
 
-    public String liberaJogoPlayer(String nomePlayer) {
-        String msg = "cadastrado com sucesso. Prepare-se!!!";
-  
+    public String liberaJogoPlayer(String nomePlayer, boolean liberado) {  
         JSONObject liberaJogo = new JSONObject();  
         liberaJogo.put("operacao"  , "1");
-        liberaJogo.put("msg"       , msg);
         liberaJogo.put("nomePlayer", nomePlayer);
-        liberaJogo.put("liberado"  , true);
+        liberaJogo.put("liberado"  , liberado);
         
         return liberaJogo.toJSONString();
     }

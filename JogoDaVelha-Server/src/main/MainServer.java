@@ -26,13 +26,13 @@ public class MainServer {
     public static void main(String[] args) throws IOException, ParseException {
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Informe a porta para a aplicação servidor: ");
+        System.out.println("Informe a porta para a aplicação do Servidor: ");
         int port = sc.nextInt();
 
         ss = new ServerSocket(port);
         ss.setReuseAddress(true);
         controller = new Controller();
-        System.out.println("Iniciado");
+        System.out.println("Servidor iniciado.");
 
         while (true) {
             receberDados();
@@ -43,7 +43,7 @@ public class MainServer {
     public static void receberDados() throws IOException, ParseException {
         s = ss.accept();
         String clienteIP = s.getInetAddress().getHostAddress();
-        System.out.println("Cliente IP " + clienteIP + " conectado.");
+        System.out.println("Cliente IP: " + clienteIP + " conectado.");
 
         InputStreamReader in = new InputStreamReader(s.getInputStream());
         BufferedReader bf    = new BufferedReader(in);
