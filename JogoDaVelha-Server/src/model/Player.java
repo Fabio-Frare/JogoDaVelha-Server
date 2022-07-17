@@ -11,6 +11,7 @@ public class Player {
     private String  nome;
     private boolean liberado;
     private String  endereco;
+    private String caracter;
 
     public Player() { }
     
@@ -44,11 +45,17 @@ public class Player {
         this.endereco = endereco;
     }
 
+    public String getCaracter() {
+        return caracter;
+    }
+
+    public void setCaracter(String caracter) {
+        this.caracter = caracter;
+    }
+
     @Override
     public String toString() {
-        return "Player{" + "nome=" + nome + ", liberado=" + liberado + ", endereco=" + endereco + '}';
+        return "Player" + "nome:" + nome + ", liberado:" + liberado + ", endereco:" + endereco + ", caracter:" + caracter + '}';
     }
-    
-    
  
 }

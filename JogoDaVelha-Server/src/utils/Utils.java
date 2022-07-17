@@ -87,11 +87,21 @@ public class Utils {
         return player;
     }
 
-    public String liberaJogoPlayer(String nomePlayer, boolean liberado) {  
+//    public String liberaJogoPlayer(String nomePlayer, boolean liberado) {  
+//        JSONObject liberaJogo = new JSONObject();  
+//        liberaJogo.put("operacao"  , "1");
+//        liberaJogo.put("nomePlayer", nomePlayer);
+//        liberaJogo.put("liberado"  , liberado);
+//        
+//        return liberaJogo.toJSONString();
+//    }
+    
+        public String liberaJogoPlayer(Player player) {  
         JSONObject liberaJogo = new JSONObject();  
         liberaJogo.put("operacao"  , "1");
-        liberaJogo.put("nomePlayer", nomePlayer);
-        liberaJogo.put("liberado"  , liberado);
+        liberaJogo.put("nomePlayer", player.getNome());
+        liberaJogo.put("liberado"  , player.isLiberado());
+        liberaJogo.put("caracter"  , player.getCaracter());
         
         return liberaJogo.toJSONString();
     }

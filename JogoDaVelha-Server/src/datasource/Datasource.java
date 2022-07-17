@@ -31,9 +31,9 @@ public class Datasource {
             player = utils.converteJsonToPlayer(msg);
             dadosPlayers.add(player);
             atualizaVezPlayer();
+            insereCaracterPlayer();            
             System.out.println("Datasource: " + dadosPlayers.toString());
-//            System.out.println("Datasource: " + dadosPlayers.size());          
-            return utils.liberaJogoPlayer(player.getNome(), player.isLiberado()); 
+            return utils.liberaJogoPlayer(player); 
         } else {
             return utils.numeroMaximoPlayers();
         }        
@@ -47,6 +47,7 @@ public class Datasource {
                 play.setLiberado(false);
             }
             atualizaContador();
+//            insereCaracterPlayer();
         }       
     }
     
@@ -56,6 +57,16 @@ public class Datasource {
         } else {
             this.contador = contador++;
         }
+    }
+
+    private void insereCaracterPlayer() {
+       for (Player playCaracter : dadosPlayers) {
+            if(dadosPlayers.indexOf(playCaracter)%2 == 0) {
+                playCaracter.setCaracter("O");
+            } else {
+                playCaracter.setCaracter("X");
+            }
+        }   
     }
 
 }
