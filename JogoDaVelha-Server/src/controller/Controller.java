@@ -23,15 +23,18 @@ public class Controller {
         
         
         switch (operacao) {
-            case "1": // cadastrar player                
+            case "1": // cadastra o cliente (player)                
                 String resposta = datasource.addPlayer(msg);                
                 return resposta;
-             
+                
+            case "2": // recebe atualização do cliente
+
+            case "3": // envia atualização para o cliente
                 
         }        
         
         
-       return "deu erro"; 
+       return "retorno trataDados()"; 
     }
     
     
