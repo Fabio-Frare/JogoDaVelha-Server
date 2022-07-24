@@ -15,7 +15,7 @@ public class Controller {
     private Datasource datasource;
     
 
-    public String trataDados(String msg, String clientIP) throws ParseException {
+    public String trataDados(String msg) throws ParseException {
         utils           = new Utils();    
         datasource      = new Datasource();
         String operacao = utils.retornaOperacao(msg);
@@ -28,7 +28,7 @@ public class Controller {
                 return resposta;
                 
             case "2": // recebe atualização do cliente
-
+                System.out.println("Mensagem trata dados " + msg);
             case "3": // envia atualização para o cliente
                 
         }        
