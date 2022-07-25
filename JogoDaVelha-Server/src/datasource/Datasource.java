@@ -1,9 +1,11 @@
 package datasource;
 
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import model.Player;
 import org.json.simple.parser.ParseException;
+import utils.SocketServer;
 import utils.Utils;
 
 /**
@@ -16,8 +18,7 @@ public class Datasource {
 
     private final Utils utils;
     private Player player;
-    private static final List<Player> dadosPlayers = new ArrayList();
-//    private String resposta = "";
+    private static List<Player> dadosPlayers = new ArrayList();
     private int contador;
 
     public Datasource() {
@@ -25,37 +26,37 @@ public class Datasource {
         contador = 1;
     }
 
-    public String addPlayer(String msg) throws ParseException {
+    public String addPlayer(Socket socket, String msg) throws ParseException {
 
         if (dadosPlayers.size() < 4) {
             player = utils.converteJsonToPlayer(msg);
+            player.setSocketCliente(socket);
             dadosPlayers.add(player);
             atualizaVezPlayer();
-            insereCaracterPlayer();            
-            System.out.println("Datasource: " + dadosPlayers.toString());
+            insereCaracterPlayer(); 
+            System.out.println("Datasource - Lista: " + dadosPlayers.toString());
             return utils.liberaJogoPlayer(player); 
         } else {
             return utils.numeroMaximoPlayers();
         }        
     }    
     
-    private void atualizaVezPlayer() {
+    public void atualizaVezPlayer() {
         for (Player play : dadosPlayers) {
             if(dadosPlayers.indexOf(play) == (contador-1)) {
                 play.setLiberado(true);
             } else {
                 play.setLiberado(false);
             }
-            atualizaContador();
-//            insereCaracterPlayer();
         }       
+        atualizaContador();
     }
     
-    private void atualizaContador() {
+    public void atualizaContador() {
         if(contador%4 == 0) {
             this.contador = 1;
         } else {
-            this.contador = contador++;
+            this.contador++;
         }
     }
 
@@ -68,5 +69,16 @@ public class Datasource {
             }
         }   
     }
+
+    public static List<Player> getDadosPlayers() {
+        return dadosPlayers;
+    }
+
+
+ 
+
+  
+    
+    
 
 }

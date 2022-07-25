@@ -22,7 +22,7 @@ public class SocketServer {
     private static ServerSocket ss;
     private static PrintWriter  pr;
     private static final int    port = 80;
-    private static Controller  controller;
+    private static Controller   controller;
     private static String       retorno;
 
     public SocketServer() throws IOException {
@@ -39,15 +39,25 @@ public class SocketServer {
         BufferedReader bf    = new BufferedReader(in);
         String msg           = bf.readLine();
 
-        retorno = controller.trataDados(msg);
-        System.out.println("Retorno receber dados: " + retorno);
+        retorno = controller.trataDados(s, msg);
+//        System.out.println("Retorno receber dados: " + retorno);
         enviarDados(retorno);
     }
     
-     public static void enviarDados(String msg) throws IOException {
+    public static void enviarDados(String msg) throws IOException {
         pr = new PrintWriter(s.getOutputStream());
         pr.println(msg);
         pr.flush();
     }
+
+    public static Socket getS() {
+        return s;
+    }
+
+    public static void setS(Socket s) {
+        SocketServer.s = s;
+    }
+     
+     
 
 }

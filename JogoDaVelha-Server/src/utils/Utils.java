@@ -96,7 +96,7 @@ public class Utils {
 //        return liberaJogo.toJSONString();
 //    }
     
-        public String liberaJogoPlayer(Player player) {  
+    public String liberaJogoPlayer(Player player) {  
         JSONObject liberaJogo = new JSONObject();  
         liberaJogo.put("operacao"  , "1");
         liberaJogo.put("nomePlayer", player.getNome());
@@ -114,6 +114,49 @@ public class Utils {
         bloqueiaJogo.put("msg"     , msg);
         
         return bloqueiaJogo.toJSONString();
+    
+    }
+
+    public int buscaPosicaoX(String msg) throws ParseException {        
+        JSONObject jsonObject;
+        JSONParser parser = new JSONParser();
+        jsonObject        = (JSONObject) parser.parse(msg);
+        int posicaoX      = Integer.parseInt((String) jsonObject.get("posicaox"));
+        
+        return posicaoX;
+ 
+    }
+
+    public int buscaPosicaoY(String msg) throws ParseException {
+        JSONObject jsonObject;
+        JSONParser parser = new JSONParser();
+        jsonObject        = (JSONObject) parser.parse(msg);
+        int posicaoY      = Integer.parseInt((String) jsonObject.get("posicaoy"));
+        
+        return posicaoY;
+    }
+
+    public String retornaCaracter(String msg) throws ParseException {
+        JSONObject jsonObject;
+        JSONParser parser = new JSONParser();
+        jsonObject        = (JSONObject) parser.parse(msg);
+        String operacao   = (String) jsonObject.get("caracter");
+        
+        return operacao;
+    
+    }
+
+    public String atualizarPlayer(int posicaox, int posicaoy, String caracter, Player player) {
+        JSONObject liberaJogo = new JSONObject();  
+        liberaJogo.put("operacao", "3");
+        liberaJogo.put("posicaox", posicaox);
+        liberaJogo.put("posicaoy", posicaoy);
+        liberaJogo.put("caracter", caracter);
+        liberaJogo.put("liberado", player.isLiberado());
+        
+        System.out.println("utils atualizarPlayer: " + liberaJogo.toJSONString());
+        
+        return liberaJogo.toJSONString();
     
     }
     

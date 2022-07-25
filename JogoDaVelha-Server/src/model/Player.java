@@ -1,5 +1,7 @@
 package model;
 
+import java.net.Socket;
+
 /**
  * Classe model de Player do Jogo da Velha.
  *
@@ -12,7 +14,8 @@ public class Player {
     private boolean liberado;
     private String  endereco;
     private String caracter;
-
+    private Socket socketCliente;
+    
     public Player() { }
     
     public Player(String nome, boolean liberado, String endereco) {
@@ -53,9 +56,20 @@ public class Player {
         this.caracter = caracter;
     }
 
+    public Socket getSocketCliente() {
+        return socketCliente;
+    }
+
+    public void setSocketCliente(Socket socketCliente) {
+        this.socketCliente = socketCliente;
+    }
+
     @Override
     public String toString() {
-        return "Player" + "nome:" + nome + ", liberado:" + liberado + ", endereco:" + endereco + ", caracter:" + caracter + '}';
+        return "Player[" + "nome:" + nome + ", liberado:" + liberado 
+                + ", caracter:" + caracter + ']';
     }
+
+ 
  
 }

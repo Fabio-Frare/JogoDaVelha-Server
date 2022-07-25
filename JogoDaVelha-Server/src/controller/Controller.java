@@ -1,6 +1,9 @@
 package controller;
 
+import datasource.ControllerJogo;
 import datasource.Datasource;
+import java.io.IOException;
+import java.net.Socket;
 import org.json.simple.parser.ParseException;
 import utils.Utils;
 
@@ -13,9 +16,10 @@ import utils.Utils;
 public class Controller {
     private Utils utils;
     private Datasource datasource;
+    private ControllerJogo controllerJogo;
     
 
-    public String trataDados(String msg) throws ParseException {
+    public String trataDados(Socket socket, String msg) throws ParseException, IOException {
         utils           = new Utils();    
         datasource      = new Datasource();
         String operacao = utils.retornaOperacao(msg);
@@ -24,22 +28,30 @@ public class Controller {
         
         switch (operacao) {
             case "1": // cadastra o cliente (player)                
-                String resposta = datasource.addPlayer(msg);                
+                String resposta = datasource.addPlayer(socket, msg);                
                 return resposta;
                 
             case "2": // recebe atualização do cliente
+            // atualizo o jogo
+            // verifico se niguem venceu
+            // verifico se deu empate
+            // atualiza os demais 
+                
                 System.out.println("Mensagem trata dados " + msg);
+                controllerJogo = new ControllerJogo();
+                controllerJogo.atualizaBotaoClicado(msg);
+                controllerJogo.show();
+                
+//                return controllerJogo.atualizaPlayers();
+
             case "3": // envia atualização para o cliente
                 
         }        
         
         
-       return "retorno trataDados()"; 
+       return ""; 
     }
-    
-    
-    
-    
+   
     
     
 }
