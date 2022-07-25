@@ -154,7 +154,7 @@ public class Utils {
         liberaJogo.put("caracter", caracter);
         liberaJogo.put("liberado", player.isLiberado());
         
-        System.out.println("utils atualizarPlayer: " + liberaJogo.toJSONString());
+//        System.out.println("utils atualizarPlayer: " + liberaJogo.toJSONString());
         
         return liberaJogo.toJSONString();
     

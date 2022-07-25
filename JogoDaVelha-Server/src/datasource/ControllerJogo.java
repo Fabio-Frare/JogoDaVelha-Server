@@ -140,6 +140,7 @@ public class ControllerJogo {
         List<Player> listaPlayers = Datasource.getDadosPlayers();   
         
         for (Player player : listaPlayers) {
+//            System.out.println("Socket Cliente: " + player.getSocketCliente());
             socketServer.setS(player.getSocketCliente());
             String msg = utils.atualizarPlayer(posicaox, posicaoy, caracter, player);
             datasource.atualizaVezPlayer();
