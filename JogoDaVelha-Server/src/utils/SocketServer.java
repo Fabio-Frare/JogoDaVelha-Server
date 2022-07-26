@@ -20,8 +20,8 @@ import org.json.simple.parser.ParseException;
  */
 public class SocketServer {
 
-    private static Socket       s;
-    private static ServerSocket ss;
+    public static Socket       s;
+    public static ServerSocket ss;
     private static PrintWriter  pr;
     private static final int    port = 80;
     private static Controller   controller;
@@ -45,7 +45,6 @@ public class SocketServer {
         }
         return server;
     }
-    
     
     
     public  void receberDados() throws IOException, ParseException {
