@@ -34,7 +34,7 @@ public class ControllerJogo {
             { new JButton(), new JButton(), new JButton()}
     };
 
-    public String atualizaBotaoClicado(String msg) throws ParseException, IOException {
+    public void atualizaBotaoClicado(String msg) throws ParseException, IOException {
         utils           = new Utils();
         int posicaoX    = utils.buscaPosicaoX(msg);
         int posicaoY    = utils.buscaPosicaoY(msg);
@@ -51,14 +51,15 @@ public class ControllerJogo {
         }
         
         if(houveVencedor()) {
-            return ""; // retorna dupla vencedora;
+//            return ""; // retorna dupla vencedora;
         }
         
         if(houveEmpate()) {
-            return "";  // retorna empate
+//            return "";  // retorna empate
         }       
         
-        return atualizaPlayers(posicaoX, posicaoY, caracter);
+//        return atualizaPlayers(posicaoX, posicaoY, caracter);
+        atualizaPlayers(posicaoX, posicaoY, caracter);
     }
     
     public boolean houveEmpate() {
@@ -131,30 +132,23 @@ public class ControllerJogo {
 
     }
     
-    public String atualizaPlayers(int posicaox, int posicaoy, String caracter) throws IOException {
+    public void atualizaPlayers(int posicaox, int posicaoy, String caracter) throws IOException {
         // posiçãox, posiçãoy, caracter, socket cliente, liberado
         datasource = new Datasource();
-//        datasource.atualizaVezPlayer();
         
                
         List<Player> listaPlayers = Datasource.getDadosPlayers();   
         
-        for (Player player : listaPlayers) {
-//            System.out.println("Socket Cliente: " + player.getSocketCliente());
+        for (Player player : listaPlayers) {            
+            socketServer = SocketServer.getInstance();
             socketServer.setS(player.getSocketCliente());
+            
             String msg = utils.atualizarPlayer(posicaox, posicaoy, caracter, player);
             datasource.atualizaVezPlayer();
+            System.out.println("AtualizaPlayer controllerJogo" + msg);
             socketServer.enviarDados(msg);
-
         }
-        
-//        System.out.println("Lista players atualizado: "+ listaPlayers.toString());
-        
-        
-        
 
-
-        return "";
     }
     
     public void show() {

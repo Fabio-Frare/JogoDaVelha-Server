@@ -14,11 +14,12 @@ public class MainServer {
 
     public static void main(String[] args) throws IOException, ParseException  {
 
-        SocketServer socketServer = new SocketServer();
+        SocketServer socketServer = SocketServer.getInstance();
         System.out.println("Servidor iniciado.");
 
         while (true) {
             socketServer.receberDados();
+            
         }
 
     }

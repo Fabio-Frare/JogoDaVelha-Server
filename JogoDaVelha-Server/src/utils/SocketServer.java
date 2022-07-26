@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -24,12 +26,27 @@ public class SocketServer {
     private static final int    port = 80;
     private static Controller   controller;
     private static String       retorno;
+    
+    private static SocketServer server;
 
     public SocketServer() throws IOException {
         controller = new Controller();
         ss = new ServerSocket(port);
         ss.setReuseAddress(true);
     }
+    
+    public static SocketServer getInstance() {
+        if (server == null) {
+            try {
+                server = new SocketServer();
+            } catch (IOException ex) {
+                Logger.getLogger(SocketServer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return server;
+    }
+    
+    
     
     public  void receberDados() throws IOException, ParseException {
         s = ss.accept();

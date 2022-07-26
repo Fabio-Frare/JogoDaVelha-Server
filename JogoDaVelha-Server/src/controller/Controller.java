@@ -28,7 +28,8 @@ public class Controller {
         
         switch (operacao) {
             case "1": // cadastra o cliente (player)                
-                String resposta = datasource.addPlayer(socket, msg);                
+                String resposta = datasource.addPlayer(socket, msg);    
+//                System.out.println("Controller 1" + msg);
                 return resposta;
                 
             case "2": // recebe atualização do cliente
@@ -41,7 +42,7 @@ public class Controller {
                 controllerJogo = new ControllerJogo();
                 controllerJogo.atualizaBotaoClicado(msg);
                 controllerJogo.show();
-                
+                break;
 //                return controllerJogo.atualizaPlayers();
 
             case "3": // envia atualização para o cliente
